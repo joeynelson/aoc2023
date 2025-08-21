@@ -1,8 +1,8 @@
 # This file is machine-generated - editing it directly is not advised
 
-julia_version = "1.11.4"
+julia_version = "1.11.6"
 manifest_format = "2.0"
-project_hash = "2e60cabf7d31f7cf1191124b732f588040cbdb0d"
+project_hash = "806ff6dcfc6d7762b83b9abd0f8717e0bc20fa05"
 
 [[deps.AliasTables]]
 deps = ["PtrArrays", "Random"]
@@ -167,6 +167,11 @@ git-tree-sha1 = "d55dffd9ae73ff72f1c0482454dcf2ec6c6c4a63"
 uuid = "2e619515-83b5-522b-bb60-26c02a35a201"
 version = "2.6.5+0"
 
+[[deps.ExprTools]]
+git-tree-sha1 = "27415f162e6028e81c72b82ef756bf321213b6ec"
+uuid = "e2ba6199-217a-4e67-a87a-7c52f15ade04"
+version = "0.1.10"
+
 [[deps.FFMPEG]]
 deps = ["FFMPEG_jll"]
 git-tree-sha1 = "53ebe7511fa11d33bec688a9178fac4e49eeee00"
@@ -265,10 +270,29 @@ git-tree-sha1 = "55c53be97790242c29031e5cd45e8ac296dadda3"
 uuid = "2e76f6c2-a576-52d4-95c1-20adfe4de566"
 version = "8.5.0+0"
 
+[[deps.InlineStrings]]
+git-tree-sha1 = "8594fac023c5ce1ef78260f24d1ad18b4327b420"
+uuid = "842dd82b-1e85-43dc-bf29-5d0ee9dffc48"
+version = "1.4.4"
+
+    [deps.InlineStrings.extensions]
+    ArrowTypesExt = "ArrowTypes"
+    ParsersExt = "Parsers"
+
+    [deps.InlineStrings.weakdeps]
+    ArrowTypes = "31f734f8-188a-4ce0-8406-c8a06bd891cd"
+    Parsers = "69de0a69-1ddd-5017-9359-2bf0b02dc9f0"
+
 [[deps.InteractiveUtils]]
 deps = ["Markdown"]
 uuid = "b77e0a4c-d291-57a0-90e8-8db25a27a240"
 version = "1.11.0"
+
+[[deps.Intervals]]
+deps = ["Dates", "Printf", "RecipesBase", "Serialization", "TimeZones"]
+git-tree-sha1 = "ac0aaa807ed5eaf13f67afe188ebc07e828ff640"
+uuid = "d8418881-c3e1-53bb-8760-2df7ec849ed5"
+version = "1.10.0"
 
 [[deps.IrrationalConstants]]
 git-tree-sha1 = "e2222959fbc6c19554dc15174c81bf7bf3aa691c"
@@ -488,6 +512,12 @@ version = "1.2.0"
 uuid = "a63ad114-7e13-5084-954f-fe012c677804"
 version = "1.11.0"
 
+[[deps.Mocking]]
+deps = ["Compat", "ExprTools"]
+git-tree-sha1 = "2c140d60d7cb82badf06d8783800d0bcd1a7daa2"
+uuid = "78c3b35d-d492-501b-9361-3d52fe80e533"
+version = "0.8.1"
+
 [[deps.MozillaCACerts_jll]]
 uuid = "14a3606d-f60d-562e-9121-12d972cd8159"
 version = "2023.12.12"
@@ -516,7 +546,7 @@ version = "0.3.27+1"
 [[deps.OpenLibm_jll]]
 deps = ["Artifacts", "Libdl"]
 uuid = "05823500-19ac-5b8b-9628-191a04bc5112"
-version = "0.8.1+4"
+version = "0.8.5+0"
 
 [[deps.OpenSSL]]
 deps = ["BitFlags", "Dates", "MozillaCACerts_jll", "OpenSSL_jll", "Sockets"]
@@ -784,6 +814,12 @@ deps = ["Dates"]
 uuid = "fa267f1f-6049-4f14-aa54-33bafae1ed76"
 version = "1.0.3"
 
+[[deps.TZJData]]
+deps = ["Artifacts"]
+git-tree-sha1 = "72df96b3a595b7aab1e101eb07d2a435963a97e2"
+uuid = "dc5dba14-91b3-4cab-a142-028a31da12f7"
+version = "1.5.0+2025b"
+
 [[deps.Tar]]
 deps = ["ArgTools", "SHA"]
 uuid = "a4e569a6-e804-4fa4-b0f3-eef7a1d5b13e"
@@ -799,6 +835,16 @@ version = "0.1.1"
 deps = ["InteractiveUtils", "Logging", "Random", "Serialization"]
 uuid = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
 version = "1.11.0"
+
+[[deps.TimeZones]]
+deps = ["Artifacts", "Dates", "Downloads", "InlineStrings", "Mocking", "Printf", "Scratch", "TZJData", "Unicode", "p7zip_jll"]
+git-tree-sha1 = "1f9a3f379a2ce2a213a0f606895567a08a1a2d08"
+uuid = "f269a46b-ccf7-5d73-abea-4c690281aa53"
+version = "1.22.0"
+weakdeps = ["RecipesBase"]
+
+    [deps.TimeZones.extensions]
+    TimeZonesRecipesBaseExt = "RecipesBase"
 
 [[deps.TranscodingStreams]]
 git-tree-sha1 = "0c45878dcfdcfa8480052b6ab162cdd138781742"
