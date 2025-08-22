@@ -69,12 +69,32 @@ function expand_universe(m,galaxies,increase)
     return galaxies
 end
 
+function expand_universe2(m, galaxies, increase)
+    cols = findall(v -> all(v .== '.'), eachcol(m))
+    rows = findall(v -> all(v .== '.'), eachrow(m))
+
+    ngalaxies = map(g -> g + CartesianIndex(increase * count(rows .< g.I[1]), increase * count(cols .< g.I[2])))
+
+    return ngalaxies
+
+end
+
 
 function solve11a()
     m = read_input11("Day11.txt")
     mexp = expand_universe(m)
 
     galaxies = findall(mexp .== '#')
+    
+    return sum(ci -> sum(abs.(ci.I)), (hcat(galaxies...) .- galaxies))÷2
+
+end
+
+function solve11a2()
+    m = read_input11("Day11.txt")
+    galaxies = findall(m .== '#')
+    mexp = expand_universe(m,galaxies,1)
+
     
     return sum(ci -> sum(abs.(ci.I)), (hcat(galaxies...) .- galaxies))÷2
 
