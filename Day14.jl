@@ -1,7 +1,6 @@
 function read_input14(filename::String = "Day14.txt")
     in14 = collect.(readlines(filename))
     return permutedims(hcat(in14...))
-
 end
 
 function tilt_north(m)
