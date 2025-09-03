@@ -1,6 +1,7 @@
 using PolygonOps
 using LinearAlgebra
-
+import GeoInterface as GI
+import GeometryOps as GO
 
 function read_input18(file_path::String)
     lines = split.(readlines(file_path))
@@ -42,8 +43,8 @@ end
 function measure_perimiter(trench)
     perimiter = 0
     for i in 1:length(trench)-1
-        perimiter += norm(Tuple(trench[i+1] - trench[i]), Inf)
-    end
+        perimiter += sum(abs.(Tuple(trench[i+1] - trench[i])))
+    end  
     return perimiter
 end
 
@@ -56,12 +57,7 @@ function dig_trench3(instructions)
     for (dir, dist, inst2) in instructions
         dist = parse(Int, inst2[3:end-2], base=16)
         dir = inst2[end-1]
-        if dir == '1' || dir == '3' 
-            for _ in 1:dist
-                loc += dist * (dir == '3' ? CartesianIndex(1, 0) : dir == '0' ? CartesianIndex(0, 1) : dir == '1' ? CartesianIndex(-1, 0) : CartesianIndex(0, -1))
-                push!(trench, loc)
-            end
-        else
+        for _ in 1:dist
             loc += dist * (dir == '3' ? CartesianIndex(1, 0) : dir == '0' ? CartesianIndex(0, 1) : dir == '1' ? CartesianIndex(-1, 0) : CartesianIndex(0, -1))
             push!(trench, loc)
         end
@@ -84,10 +80,18 @@ function fill_pit(trench)
 end
 
 function solve18a()
-    instructions = read_input18("input18.txt")
+    instructions = read_input18("Day18.txt")
     trench = dig_trench(instructions)
     pit = fill_pit(trench)
     return sum(pit)
 end
 
+function solve18b()
+    instructions = read_input18("Day18.txt")
+    trench = dig_trench2(instructions)
+    perimiter = measure_perimiter(trench)
+    pit_area =  Int64(GO.area(GI.Polygon(GI.LinearRing(Tuple.(t2)))))
+
+    return perimiter ÷ 2 + 1 + pit_area
+end
 
