@@ -1,4 +1,6 @@
 using PolygonOps
+using LinearAlgebra
+
 
 function read_input18(file_path::String)
     lines = split.(readlines(file_path))
@@ -36,6 +38,15 @@ function dig_trench2(instructions)
     return trench .+ offset
 
 end
+
+function measure_perimiter(trench)
+    perimiter = 0
+    for i in 1:length(trench)-1
+        perimiter += norm(Tuple(trench[i+1] - trench[i]), Inf)
+    end
+    return perimiter
+end
+
 
 
 function dig_trench3(instructions)
